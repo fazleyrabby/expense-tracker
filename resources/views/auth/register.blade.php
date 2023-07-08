@@ -2,12 +2,13 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-full md:w-4/12 bg-white p-6 rounded-lg">
+        <div class="w-full bg-white p-6 rounded-lg">
             @if(session()->has('success'))
                 <div class="bg-green-200 text-sm p-4 mb-2 border rounded-lg">
                     {{ session()->get('success') }}
                 </div>
             @endif
+            <h1 class="font-bold text-2xl text-center">Register</h1>
             <form action="{{ route('register') }}" method="post">
                 @csrf
                 <x-input :name='"name"' :title='"Your Name"' :id='"name"' :value='old("name")'></x-input>

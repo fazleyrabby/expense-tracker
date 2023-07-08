@@ -8,23 +8,8 @@
     <title>Expense Tracker</title>
 </head>
 <body class="bg-gray-200">
-    <nav class="p-6 bg-white flex justify-between mb-4">
-            <ul class="flex items-center">
-                <li><a class="p-3" href="">Home</a></li>
-                {{-- <li><a class="p-3" href="">Categories</a></li> --}}
-                <li><a class="p-3" href="">Dashboard</a></li>
-                {{-- {{-- <li><a class="p-3" href="">Budget</a></li> --}}
-                {{-- <li><a class="p-3" href="">Transactions</a></li>  --}}
-            </ul>
-
-            <ul class="flex items-center">
-                <li><a class="p-3" href="">{{ auth()->user()->username }}</a></li>
-                <li><a class="p-3" href="">Login</a></li>
-                <li><a class="p-3" href="{{ route('register') }}">Register</a></li>
-                <li><a class="p-3" href="">Logout</a></li>
-            </ul>
-    </nav>
-    <div class="px-2">
+    @include('partials.nav')
+    <div class="px-4 w-full lg:w-[80vw] md:w-[70vw] mx-auto">
         @yield('content')
     </div>
 </body>
