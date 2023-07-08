@@ -3,13 +3,18 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-full md:w-4/12 bg-white p-6 rounded-lg">
+            @if(session()->has('success'))
+                <div class="bg-green-200 text-sm p-4 mb-2 border rounded-lg">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
             <form action="{{ route('register') }}" method="post">
                 @csrf
-                <x-input :name='"name"' :title='"Name"' :id='"name"'></x-input>
-                <x-input :name='"username"' :title='"Username"' :id='"username"'></x-input>
-                <x-input :name='"email"' :title='"Email"' :type='"email"' :id='"email"'></x-input>
+                <x-input :name='"name"' :title='"Your Name"' :id='"name"' :value='old("name")'></x-input>
+                <x-input :name='"username"' :title='"Your Username"' :id='"username"' :value='old("username")'></x-input>
+                <x-input :name='"email"' :title='"Your Email"' :type='"email"' :id='"email"' :value='old("email")'></x-input>
                 <x-input :name='"password"' :title='"Password"' :type='"password"' :id='"password"'></x-input>
-                <x-input :name='"password_confirmation"' :title='"Repeat Password"' :type='"password"' :id='"password_confirmation"'></x-input>
+                <x-input :name='"password_confirmation"' :title='"Confirm Password"' :type='"password"' :id='"password_confirmation"'></x-input>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Register</button>
             </form>
         </div>

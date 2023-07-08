@@ -18,7 +18,7 @@
             </ul>
 
             <ul class="flex items-center">
-                <li><a class="p-3" href="">Fazley!</a></li>
+                <li><a class="p-3" href="">{{ auth()->user()->username }}</a></li>
                 <li><a class="p-3" href="">Login</a></li>
                 <li><a class="p-3" href="{{ route('register') }}">Register</a></li>
                 <li><a class="p-3" href="">Logout</a></li>
