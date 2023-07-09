@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth']], function(){
 });
 
 Route::get('/login',[LoginController::class, 'index'])->name('login');
+Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 Route::post('/login',[LoginController::class, 'store']);
 
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
@@ -31,3 +32,4 @@ Route::post('/register',[RegisterController::class, 'store']);
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+

@@ -12,7 +12,7 @@
         <ul class="md:flex md:flex-row items-center">
             @auth
                 <li><a class="md:p-3" href="{{ route('dashboard') }}">{{  auth()->user()->username }}</a></li>
-                <li><a class="md:p-3 " href="">Logout</a></li>
+                <li><a class="md:p-3 " href="{{ route('logout') }}">Logout</a></li>
             @endauth
             @guest
                 <li><a class="md:p-3" href="{{ route('login') }}">Login</a></li>

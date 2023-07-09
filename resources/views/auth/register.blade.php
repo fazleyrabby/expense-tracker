@@ -3,10 +3,8 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-full bg-white p-6 rounded-lg">
-            @if(session()->has('success'))
-                <div class="bg-green-200 text-sm p-4 mb-2 border rounded-lg">
-                    {{ session()->get('success') }}
-                </div>
+            @if(session()->has('alert'))
+                <x-alert :type='"success"'></x-alert>
             @endif
             <h1 class="font-bold text-2xl text-center">Register</h1>
             <form action="{{ route('register') }}" method="post">
