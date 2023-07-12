@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-full bg-white p-6 rounded-lg">
+        <div class="sm:w-2/3 w-full bg-white p-6 rounded-lg">
             @if(session()->has('alert'))
                 <x-alert :type='"success"'></x-alert>
             @endif

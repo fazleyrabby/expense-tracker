@@ -19,11 +19,12 @@
                 @include('partials.sidebar')
                 <div class="flex flex-col overflow-y-auto w-full bg-white p-6 rounded-md">
                     <!-- breadcrumbs -->
-                    <x-breadcrumbs></x-breadcrumbs>
+                    {{-- <x-breadcrumbs></x-breadcrumbs> --}}
                     @yield('content')
                 </div>
             </div>
         </main>
     </div>
+    @stack('script')
 </body>
 </html>
