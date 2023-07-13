@@ -2,14 +2,9 @@
 
 
 function categoryTypes(){ 
-    return array(
-        [
-            'value' => 'income',
-            'title' => 'Income'
-        ],
-        [
-            'value' => 'expense',
-            'title' => 'Expense'
-        ],
-    );
+    return [
+        'income' => 'Income',
+        'expense' => 'Expense',
+        'both' => 'Both'
+    ];
 }

@@ -19,7 +19,7 @@ return new class extends Migration
                   ->references('id')
                   ->on('users')
                   ->onDelete('cascade');
-            $table->enum('type', ['expense', 'income']);
+            $table->enum('type', ['expense', 'income', 'both']);
             $table->timestamps();
         });
     }

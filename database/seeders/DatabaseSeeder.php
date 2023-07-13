@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
 
         Category::create([
             'name' => 'Others',
-            'type' => 'expense',
+            'type' => 'both',
             'user_id' => $user->id
         ]);
 
