@@ -21,6 +21,9 @@
                 Type
             </th>
             <th scope="col" class="px-6 py-3">
+                Amount
+            </th>
+            <th scope="col" class="px-6 py-3">
                 Category
             </th>
             <th scope="col" class="px-6 py-3">
@@ -42,6 +45,9 @@
             </td>
             <td class="px-6 py-4">
                 {{ ucwords($transaction->type) }}
+            </td>
+            <td class="px-6 py-4">
+                {{ $transaction->amount }}
             </td>
             <td class="px-6 py-4">
                 {{ $transaction->category?->name }}
