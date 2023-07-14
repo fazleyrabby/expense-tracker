@@ -27,6 +27,7 @@ class DashboardController extends Controller
         $analyticsMonthlyCurrentYear = Transaction::query()
         ->select(DB::raw('YEAR(created_at) as year'), DB::raw('DATE_FORMAT(created_at, "%M") as month'), $caseIncome, $caseExpense)
         ->whereYear('created_at', date('Y'))
+        ->orderBy('month')
         ->groupBy('month','year')
         ->get();
     
@@ -38,14 +39,13 @@ class DashboardController extends Controller
                         'income' => $analytics['income'],
                         'expense' => $analytics['expense'],
                     ];
-                }else{
-                    return [
-                        'month' => $month,
-                        'income' => null,
-                        'expense' => null,
-                    ];
                 }
             }
+            return [
+                'month' => $month,
+                'income' => null,
+                'expense' => null,
+            ];
         }, options('months') ?? []);
 
         return view('dashboard', compact('data', 'analytics'));
