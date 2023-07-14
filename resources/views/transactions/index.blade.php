@@ -6,8 +6,6 @@
     {{-- <a href="{{ route('categories.create') }}" class="text-sm bg-blue-800 text-white rounded px-3 py-1">Create</a> --}}
 </div>
 
-<x-alert></x-alert>
-
 <table class="w-full text-sm text-left text-gray-500 rounded-lg mb-3">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
         <tr>
@@ -29,9 +27,9 @@
             <th scope="col" class="px-6 py-3">
                 Created At
             </th>
-            {{-- <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-6 py-3">
                 Actions
-            </th> --}}
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -55,12 +53,12 @@
             <td class="px-6 py-4">
                 {{ Carbon\Carbon::parse($transaction->created_at)->isoFormat('LLL') }}
             </td>
-            {{-- <td class="px-6 py-4 w-4">
+            <td class="px-6 py-4 w-4">
                 <div class="flex justify-between">
-                    <x-edit-btn :route="route('categories.edit', $category->id)"></x-edit-btn>
-                    <x-delete-btn :route="route('categories.destroy', $category->id)"></x-delete-btn>
+                    <x-edit-btn :route="route('transactions.edit', $transaction->id)"></x-edit-btn>
+                    <x-delete-btn :route="route('transactions.destroy', $transaction->id)"></x-delete-btn>
                 </div>
-            </td> --}}
+            </td>
         </tr>
        
         @endforeach

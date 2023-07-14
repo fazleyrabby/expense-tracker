@@ -6,8 +6,6 @@
     <a href="{{ route('categories.create') }}" class="text-sm bg-blue-800 text-white rounded px-3 py-1">Create</a>
 </div>
 
-<x-alert></x-alert>
-
 <table class="w-full text-sm text-left text-gray-500 rounded-lg mb-3">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
         <tr>

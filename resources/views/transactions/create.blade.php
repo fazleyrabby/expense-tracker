@@ -9,7 +9,7 @@
 <form action="{{ route('transactions.store') }}" method="post">
     @csrf
     <x-input :name='"name"' :title='"Name"' :type='"text"' :id='"name"' :value='old("name")'></x-input>
-    <x-input :name='"type"' :type='"hidden"' :value='"income"'></x-input>
+    <x-input :name='"type"' :type='"hidden"' :value='request()->type'></x-input>
     <x-input :name='"amount"' :title='"Amount"' :type='"text"' :id='"amount"' :value='old("amount")'></x-input>
     <x-input :name='"note"' :title='"Note"' :type='"text"' :id='"note"' :value='old("note")'></x-input>
     <x-select :name='"category"' :title='"Category"' :id='"category"' :value='old("category")' :options='$categories'></x-select>

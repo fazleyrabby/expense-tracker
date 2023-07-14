@@ -10,7 +10,7 @@
     @csrf
     @method('put')
     <x-input :name='"name"' :title='"Category Name"' :type='"name"' :id='"name"' :value='$category->name'></x-input>
-    <x-select :name='"type"' :title='"Category Type"' :type='"type"' :id='"type"' :value='$category->type' :options='categoryTypes()'></x-select>
+    <x-select :name='"type"' :title='"Category Type"' :type='"type"' :id='"type"' :value='$category->type' :options='options("categories")'></x-select>
     <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium ">Submit</button>
 </form>
 

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Expense Tracker</title>
 </head>
 <body class="bg-gray-200">
@@ -17,9 +17,11 @@
             <div class="flex flex-1 flex-col md:flex-row overflow-hidden gap-4">
                 <!-- sidebar -->
                 @include('partials.sidebar')
+               
                 <div class="flex flex-col overflow-y-auto w-full bg-white p-6 rounded-md">
                     <!-- breadcrumbs -->
                     {{-- <x-breadcrumbs></x-breadcrumbs> --}}
+                     <x-alert></x-alert>
                     @yield('content')
                 </div>
             </div>
