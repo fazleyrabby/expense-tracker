@@ -56,9 +56,9 @@ class TransactionController extends Controller
         $transaction->user_id = auth()->user()->id;
         $transaction->category_id = $request->category;
 
-        if(!$this->updateWallet() && $request->type == 'expense'){
-            return redirect()->back()->with('error', 'Not enough money on wallet!');
-        }
+        // if($request->amount > wallet('wallet') && $request->type == 'expense'){
+        //     return redirect()->back()->with('error', 'Not enough money on wallet!');
+        // }
 
         $transaction->save();
 
@@ -89,6 +89,9 @@ class TransactionController extends Controller
         return redirect()->route('transactions.index')->with('success', 'Transaction successfully deleted!');;
     }
 
+    public function walletCheck(){
+        return $this->updateWallet();
+    }
 
     private function updateWallet(){
         $user = User::find(auth()->user()->id);

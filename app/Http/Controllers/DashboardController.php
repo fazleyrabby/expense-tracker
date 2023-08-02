@@ -11,9 +11,13 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function index(){
-        $data['income'] = wallet('income');
-        $data['expense'] = wallet('expense');
+        $data['incomeCurrentMonth'] = wallet('income');
+        $data['expenseCurrentMonth'] = wallet('expense');
         $data['wallet'] = wallet('wallet');
+        $data['incomeTotal'] = wallet('incomeTotal');
+        $data['expenseTotal'] = wallet('expenseTotal');
+        $data['avgExpenseMonthly'] = wallet('avgExpenseMonthly');
+        $data['avgIncomeMonthly'] = wallet('avgIncomeMonthly');
 
         $caseIncome = DB::raw('SUM(CASE WHEN type="income" THEN amount ELSE 0 END) as income');
         $caseExpense = DB::raw('SUM(CASE WHEN type="expense" THEN amount ELSE 0 END) as expense');
@@ -42,6 +46,9 @@ class DashboardController extends Controller
             ];
         }, options('months') ?? []);
 
-        return view('dashboard', compact('data', 'analytics'));
+
+        $transactions = Transaction::with('category')->where('user_id', auth()->user()->id)->latest()->limit(3)->get();
+
+        return view('dashboard', compact('data', 'analytics','transactions'));
     }
 }

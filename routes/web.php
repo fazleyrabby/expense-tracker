@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
     Route::resource('categories', CategoryController::class);
     Route::resource('transactions', TransactionController::class);
+    Route::get('/sync',[TransactionController::class, 'walletCheck'])->name('wallet.update');
 });
 
 Route::get('/login',[LoginController::class, 'index'])->name('login');
