@@ -10,7 +10,18 @@ use Illuminate\Http\Request;
 class TransactionController extends Controller
 {
     public function index(){
-        $transactions = Transaction::with('category')->where('user_id', auth()->user()->id)->paginate(10);
+        $term = request()->search;
+        $query = Transaction::query();
+        
+        $query->when($term !== '', function($q) use ($term){
+           return  $q->where('name', 'LIKE', "%{$term}%");
+        });
+
+        $transactions = $query->with('category')->where('user_id', auth()->user()->id)
+        ->latest()
+        ->paginate(10)
+        ->appends(['search' => $term]);
+
         return view('transactions.index', compact('transactions'));
     }
 
