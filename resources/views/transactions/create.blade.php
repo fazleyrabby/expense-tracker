@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="flex justify-between">
-    <h1 class="text-sm text-slate-300">Income Create</h1>
+    <h1 class="text-sm text-slate-300">{{ ucwords(request()->type) }} Create</h1>
     <a href="{{ route('transactions.index') }}" class="text-sm bg-blue-800 text-white rounded px-3 py-1">Transactions</a>
 </div>
 

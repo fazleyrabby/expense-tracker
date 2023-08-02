@@ -11,15 +11,9 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function index(){
-        $data['income'] = Transaction::where([
-            ['type', 'income'],
-            ['user_id', auth()->user()->id],
-        ])->whereMonth('created_at', Carbon::now()->month)->sum('amount');
-        $data['expense'] = Transaction::where([
-            ['type', 'expense'],
-            ['user_id', auth()->user()->id],
-        ])->whereMonth('created_at', Carbon::now()->month)->sum('amount');
-        $data['wallet'] = $data['income'] - $data['expense'];
+        $data['income'] = wallet('income');
+        $data['expense'] = wallet('expense');
+        $data['wallet'] = wallet('wallet');
 
         $caseIncome = DB::raw('SUM(CASE WHEN type="income" THEN amount ELSE 0 END) as income');
         $caseExpense = DB::raw('SUM(CASE WHEN type="expense" THEN amount ELSE 0 END) as expense');

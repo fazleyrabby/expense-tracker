@@ -6,6 +6,7 @@
             <li><a @class(['text-slate-400'=> request()->is('dashboard'),'md:p-3']) href="{{ route('dashboard') }}">Dashboard</a></li>
             {{-- {{-- <li><a class="p-3" href="">Budget</a></li> --}}
             {{-- <li><a class="p-3" href="">Transactions</a></li>  --}}
+            <li><small>Wallet: {{ wallet('wallet') }} {{ options('currency') }}</small></li>
         </ul>
         <span class="font-bold hidden sm:flex">Expense Tracker</span>
         <div class="border-b-2 border-b-blue-100 sm:hidden"></div>

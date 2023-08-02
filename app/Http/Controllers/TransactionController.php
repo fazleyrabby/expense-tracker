@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -54,6 +55,11 @@ class TransactionController extends Controller
         $transaction->amount = $request->amount;
         $transaction->user_id = auth()->user()->id;
         $transaction->category_id = $request->category;
+
+        if(!$this->updateWallet() && $request->type == 'expense'){
+            return redirect()->back()->with('error', 'Not enough money on wallet!');
+        }
+
         $transaction->save();
 
         return redirect()->route('transactions.index')->with('success', $message);
@@ -81,5 +87,16 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction){
         $transaction->delete();
         return redirect()->route('transactions.index')->with('success', 'Transaction successfully deleted!');;
+    }
+
+
+    private function updateWallet(){
+        $user = User::find(auth()->user()->id);
+        if($user->wallet < 0){
+            return false;
+        }
+        $user->wallet = wallet('wallet');
+        $user->save();
+        return true;
     }
 }
